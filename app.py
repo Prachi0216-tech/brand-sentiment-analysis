@@ -25,7 +25,7 @@ st.markdown("---")
 # ---------------------------------------------------------------------------
 # Load data — with a safety check so the app never crashes on a missing file
 # ---------------------------------------------------------------------------
-df_raw = load_data()
+df_raw = load_data("data/tweets.csv")
 
 if df_raw.empty:
     st.error("⚠️ Data file not found or is empty. Please check `data/tweets.csv`.")
