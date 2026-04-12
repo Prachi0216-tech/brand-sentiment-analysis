@@ -93,16 +93,20 @@ st.markdown("---")
 # ---------------------------------------------------------------------------
 # Sentiment distribution chart — with meaningful colors and a title
 # ---------------------------------------------------------------------------
+# Sentiment distribution
 st.subheader("Sentiment Distribution")
 
-sentiment_counts = df_analyzed["predicted_sentiment"].value_counts().reset_index()
+sentiment_counts = (
+    df_analyzed["predicted_sentiment"]
+    .value_counts()
+    .reset_index()
+)
 sentiment_counts.columns = ["Sentiment", "Count"]
 
-# Map sentiments to intuitive colors
 color_map = {
-    "Positive": "#2ecc71",  # green
-    "Negative": "#e74c3c",  # red
-    "Neutral":  "#95a5a6",  # grey
+    "Positive": "#2ecc71",
+    "Negative": "#e74c3c",
+    "Neutral":  "#95a5a6",
 }
 
 fig = px.pie(
@@ -112,10 +116,11 @@ fig = px.pie(
     title=f"Sentiment Breakdown — {selected_airline}",
     color="Sentiment",
     color_discrete_map=color_map,
-    hole=0.3,  # donut style — looks more modern than a full pie
+    hole=0.3,
 )
 fig.update_traces(textposition="inside", textinfo="percent+label")
-st.plotly_chart(fig, use_container_width=True)
+fig.update_layout(title_x=0.5)  # center the title
+st.plotly_chart(fig, use_container_width=True, key=selected_airline)
 
 # ---------------------------------------------------------------------------
 # Review data table — only show relevant columns, no temp columns
