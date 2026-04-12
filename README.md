@@ -108,8 +108,13 @@ The Logistic Regression classifier is trained on 80% of the data and evaluated o
 | Features | TF-IDF (5000 features, unigrams + bigrams) |
 | Classes | Positive / Negative / Neutral |
 | Train/Test Split | 80% / 20% (stratified) |
+| Overall Accuracy | 71.41% |
+| Negative F1-Score | 0.82 |
+| Positive F1-Score | 0.59 |
+| Neutral F1-Score | 0.49 |
+| Dataset Size | 3,338 tweets |
 
-> Run `python model.py` to see the full classification report and accuracy on your machine.
+> Neutral class F1 is lower due to limited signal words in neutral tweets — a known challenge in short-text sentiment classification.
 
 ---
 
