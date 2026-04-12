@@ -8,7 +8,7 @@ Built with **Python**, **Scikit-learn**, **VADER**, and **Streamlit**.
 
 ## 🖥️ Live Demo
 
-> Run locally using the steps below.
+👉 **[Click here to view the live app](https://brand-sentiment-prachi.streamlit.app/)**
 
 ---
 
