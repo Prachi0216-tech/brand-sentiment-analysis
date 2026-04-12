@@ -12,16 +12,22 @@ def load_data(filepath="data/tweets.csv"):
     Load tweet data from a CSV file.
 
     Args:
-        filepath (str): Path to the CSV file. Defaults to 'data/tweets.csv'.
+        filepath (str): Path to the CSV file.
 
     Returns:
         pd.DataFrame: Loaded dataframe, or empty dataframe if file not found.
     """
-    if not os.path.exists(filepath):
-        print(f"[Warning] File not found: {filepath}. Returning empty DataFrame.")
+    import os
+    
+    # This fixes the path issue on Streamlit Cloud
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    full_path = os.path.join(base_dir, filepath)
+    
+    if not os.path.exists(full_path):
+        print(f"[Warning] File not found: {full_path}. Returning empty DataFrame.")
         return pd.DataFrame()
-    return pd.read_csv(filepath)
-
+    
+    return pd.read_csv(full_path)
 
 def get_sentiment_label(compound_score):
     """
